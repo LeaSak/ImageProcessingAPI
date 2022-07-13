@@ -33,6 +33,7 @@
     "express": "^4.18.1",
     "jasmine": "^4.2.1",
     "jasmine-spec-reporter": "^7.0.0",
+    "sharp": "^0.30.7",
     "supertest": "^6.2.4"
   }
 }
