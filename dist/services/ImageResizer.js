@@ -39,23 +39,37 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var supertest_1 = __importDefault(require("supertest"));
-var index_1 = __importDefault(require("../index"));
-var request = (0, supertest_1.default)(index_1.default);
-describe('Test endpoint responses for main api', function () {
-    describe("Status 200 for main api route", function () {
-        var _this = this;
-        it('test request', function () { return __awaiter(_this, void 0, void 0, function () {
-            var response;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, request.get('/api')];
+var sharp_1 = __importDefault(require("sharp"));
+var ImageResizer = /** @class */ (function () {
+    function ImageResizer() {
+    }
+    ImageResizer.resizeImage = function (obj, baseImagePath, thumbImagePath) {
+        return __awaiter(this, void 0, void 0, function () {
+            var sharpImage, _a, error_1;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _b.trys.push([0, 4, , 5]);
+                        if (!thumbImagePath) return [3 /*break*/, 2];
+                        return [4 /*yield*/, (0, sharp_1.default)(baseImagePath).resize(Number(obj.width), Number(obj.height)).toFile(thumbImagePath)];
                     case 1:
-                        response = _a.sent();
-                        expect(response.status).toBe(200);
-                        return [2 /*return*/];
+                        _a = _b.sent();
+                        return [3 /*break*/, 3];
+                    case 2:
+                        _a = '';
+                        _b.label = 3;
+                    case 3:
+                        sharpImage = _a;
+                        return [2 /*return*/, (sharpImage) ? thumbImagePath : ""];
+                    case 4:
+                        error_1 = _b.sent();
+                        console.error(error_1);
+                        return [2 /*return*/, ""];
+                    case 5: return [2 /*return*/];
                 }
             });
-        }); });
-    });
-});
+        });
+    };
+    return ImageResizer;
+}());
+exports.default = ImageResizer;

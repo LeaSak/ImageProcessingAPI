@@ -3,15 +3,14 @@ import app from '../index';
 
 const request = supertest(app);
 
-describe('Test endpoint responses', () => {
-    it('gets the api endpoint', async () => {
-        const response = await request.get('/api');
-        expect(response.status).toBe(200);
-    }
-)});
-
-describe("", function (){
-  it('true to be true', () => {
-    expect(true).toBe(true);
+describe('Test endpoint responses for main api', ():void => {
+  describe("Status 200 for main api route", function(): void{
+    it('test request', async (): Promise <void> => {
+      const response = await request.get('/api');
+      expect(response.status).toBe(200);
+    });
   });
 });
+
+
+

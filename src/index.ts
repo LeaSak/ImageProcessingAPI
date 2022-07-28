@@ -1,13 +1,21 @@
 import express from 'express';
+import routes from './routes/index';
+import path from 'path';
+import { buildDirectories } from './utilities/fileUtilities';
+import { config } from './config/config';
+
 const app = express();
-const port = 3000;
+const port = config.port;
 
-app.get('/api', (req, res) => {
-  res.send('Hello world!');
- });
+app.use('/api', routes);
 
- app.listen(port, ()=> {
-  console.log(`server started at localhost:${port}`)
- });
+app.listen(port, () => {
+  const fullDirName = path.join(__dirname, '..', config.paths.full);
+  const thumbDirName = path.join(__dirname, '..', config.paths.thumb);
+  buildDirectories(fullDirName);
+  buildDirectories(thumbDirName);
 
- export default app;
+  console.log(`server started at localhost:${port}`);
+});
+
+export default app;

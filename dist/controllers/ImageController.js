@@ -39,23 +39,55 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var supertest_1 = __importDefault(require("supertest"));
-var index_1 = __importDefault(require("../index"));
-var request = (0, supertest_1.default)(index_1.default);
-describe('Test endpoint responses for main api', function () {
-    describe("Status 200 for main api route", function () {
-        var _this = this;
-        it('test request', function () { return __awaiter(_this, void 0, void 0, function () {
-            var response;
+var ImageFinder_1 = __importDefault(require("../services/ImageFinder"));
+var ImageController = /** @class */ (function () {
+    function ImageController() {
+    }
+    ImageController.processImageRequest = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var imageData, validRequest, imagePath;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, request.get('/api')];
+                    case 0:
+                        imageData = ImageController.collectRequestData(req);
+                        validRequest = ImageController.validateRequest(imageData);
+                        if (!validRequest) {
+                            ImageController.sendInvalidURLRequest(res);
+                            return [2 /*return*/];
+                        }
+                        return [4 /*yield*/, ImageFinder_1.default.getImageByNameWidthAndHeight(imageData)];
                     case 1:
-                        response = _a.sent();
-                        expect(response.status).toBe(200);
-                        return [2 /*return*/];
+                        imagePath = _a.sent();
+                        return [2 /*return*/, (imagePath) ? this.sendResizedFile(res, imagePath) : this.sendErrorStatus(res)];
                 }
             });
-        }); });
-    });
-});
+        });
+    };
+    ImageController.collectRequestData = function (req) {
+        var imageRequest = {
+            filename: req.query.filename,
+            width: req.query.width,
+            height: req.query.height,
+        };
+        return imageRequest;
+    };
+    ImageController.validateRequest = function (obj) {
+        return Boolean((obj.filename && obj.width && obj.height) && this.isPositiveInteger(obj));
+    };
+    ImageController.isPositiveInteger = function (obj) {
+        var widthAsNumber = (obj.width) ? parseInt(obj.width, 10) : 0;
+        var heightAsNumber = (obj.height) ? parseInt(obj.height, 10) : 0;
+        return Boolean(widthAsNumber > 0 && heightAsNumber > 0);
+    };
+    ImageController.sendInvalidURLRequest = function (res) {
+        res.status(400).send('Invalid parameters. Please provide name, with and height. Width and height should be non negative.');
+    };
+    ImageController.sendErrorStatus = function (res) {
+        res.status(404).send('Error finding requested image');
+    };
+    ImageController.sendResizedFile = function (res, path) {
+        res.status(200).sendFile(path);
+    };
+    return ImageController;
+}());
+exports.default = ImageController;

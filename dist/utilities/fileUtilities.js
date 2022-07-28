@@ -39,23 +39,37 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var supertest_1 = __importDefault(require("supertest"));
-var index_1 = __importDefault(require("../index"));
-var request = (0, supertest_1.default)(index_1.default);
-describe('Test endpoint responses for main api', function () {
-    describe("Status 200 for main api route", function () {
-        var _this = this;
-        it('test request', function () { return __awaiter(_this, void 0, void 0, function () {
-            var response;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, request.get('/api')];
-                    case 1:
-                        response = _a.sent();
-                        expect(response.status).toBe(200);
-                        return [2 /*return*/];
-                }
-            });
-        }); });
+exports.buildDirectories = exports.checkFileAccess = void 0;
+var fs_1 = __importDefault(require("fs"));
+var checkFileAccess = function (path) {
+    return __awaiter(this, void 0, void 0, function () {
+        var found, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, fs_1.default.promises.access(path, fs_1.default.constants.F_OK)];
+                case 1:
+                    found = _a.sent();
+                    return [2 /*return*/, true];
+                case 2:
+                    error_1 = _a.sent();
+                    console.error(error_1);
+                    return [2 /*return*/, false];
+                case 3: return [2 /*return*/];
+            }
+        });
     });
-});
+};
+exports.checkFileAccess = checkFileAccess;
+var buildDirectories = function (dirPath) {
+    try {
+        if (!fs_1.default.existsSync(dirPath)) {
+            fs_1.default.mkdirSync(dirPath, { recursive: true });
+        }
+    }
+    catch (err) {
+        console.error(err);
+    }
+};
+exports.buildDirectories = buildDirectories;

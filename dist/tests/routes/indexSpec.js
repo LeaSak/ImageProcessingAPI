@@ -40,16 +40,76 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var supertest_1 = __importDefault(require("supertest"));
-var index_1 = __importDefault(require("../index"));
+var index_1 = __importDefault(require("../../index"));
 var request = (0, supertest_1.default)(index_1.default);
-describe('Test endpoint responses for main api', function () {
-    describe("Status 200 for main api route", function () {
+describe('Test endpoint responses', function () {
+    describe("Status 400 if missing parametes width and height", function () {
         var _this = this;
-        it('test request', function () { return __awaiter(_this, void 0, void 0, function () {
+        it('test request: api/images', function () { return __awaiter(_this, void 0, void 0, function () {
             var response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, request.get('/api')];
+                    case 0: return [4 /*yield*/, request.get('/api/images')];
+                    case 1:
+                        response = _a.sent();
+                        expect(response.status).toBe(400);
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+    });
+    describe("Status 400 if missing parameters height", function () {
+        var _this = this;
+        it('test request: api/images', function () { return __awaiter(_this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, request.get('/api/images?filename=santamonica&width=100')];
+                    case 1:
+                        response = _a.sent();
+                        expect(response.status).toBe(400);
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+    });
+    describe("Status 400 if missing parameters width", function () {
+        var _this = this;
+        it('test request: api/images', function () { return __awaiter(_this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, request.get('/api/images?filename=santamonica&height=100')];
+                    case 1:
+                        response = _a.sent();
+                        expect(response.status).toBe(400);
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+    });
+    describe("Status 400 if dimensions are not zero positive", function () {
+        var _this = this;
+        it('test request: api/images', function () { return __awaiter(_this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, request.get('/api/images?filename=santamonica&height=-100')];
+                    case 1:
+                        response = _a.sent();
+                        expect(response.status).toBe(400);
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+    });
+    describe("Status 200 if dimensions are not zero parameters", function () {
+        var _this = this;
+        it('test request: api/images', function () { return __awaiter(_this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, request.get('/api/images?filename=santamonica&width=100&height=100')];
                     case 1:
                         response = _a.sent();
                         expect(response.status).toBe(200);

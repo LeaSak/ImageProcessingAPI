@@ -39,23 +39,35 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var supertest_1 = __importDefault(require("supertest"));
-var index_1 = __importDefault(require("../index"));
-var request = (0, supertest_1.default)(index_1.default);
-describe('Test endpoint responses for main api', function () {
-    describe("Status 200 for main api route", function () {
-        var _this = this;
-        it('test request', function () { return __awaiter(_this, void 0, void 0, function () {
-            var response;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, request.get('/api')];
-                    case 1:
-                        response = _a.sent();
-                        expect(response.status).toBe(200);
-                        return [2 /*return*/];
-                }
-            });
-        }); });
+exports.resizeImage = void 0;
+var path_1 = __importDefault(require("path"));
+var sharp_1 = __importDefault(require("sharp"));
+var resizeImage = function (imagePath, width, height, destFolder) {
+    return __awaiter(this, void 0, void 0, function () {
+        var sharpImage, metadata, pathObj, destPath, file, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 4, , 5]);
+                    return [4 /*yield*/, (0, sharp_1.default)(imagePath).resize(width, height)];
+                case 1:
+                    sharpImage = _a.sent();
+                    return [4 /*yield*/, sharpImage.metadata()];
+                case 2:
+                    metadata = _a.sent();
+                    pathObj = path_1.default.parse(imagePath);
+                    destPath = path_1.default.resolve(destFolder, "".concat(pathObj.name, "-").concat(metadata.width, "x").concat(metadata.height) + pathObj.ext);
+                    return [4 /*yield*/, sharpImage.toFile(destPath)];
+                case 3:
+                    file = _a.sent();
+                    return [2 /*return*/, destPath];
+                case 4:
+                    error_1 = _a.sent();
+                    console.log(error_1);
+                    return [2 /*return*/, ''];
+                case 5: return [2 /*return*/];
+            }
+        });
     });
-});
+};
+exports.resizeImage = resizeImage;
