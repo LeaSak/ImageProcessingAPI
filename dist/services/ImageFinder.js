@@ -58,7 +58,7 @@ var ImageFinder = /** @class */ (function () {
                     case 0:
                         baseImagePath = this.getBaseImagePath(obj);
                         thumbImagePath = this.getThumbImagePath(obj);
-                        if (!(thumbImagePath)) return [3 /*break*/, 2];
+                        if (!thumbImagePath) return [3 /*break*/, 2];
                         return [4 /*yield*/, this.checkImageAccessByPath(thumbImagePath)];
                     case 1:
                         _a = _b.sent();
@@ -75,7 +75,7 @@ var ImageFinder = /** @class */ (function () {
                     case 4:
                         baseImageAccess = _b.sent();
                         if (!baseImageAccess) {
-                            return [2 /*return*/, ""];
+                            return [2 /*return*/, ''];
                         }
                         return [4 /*yield*/, ImageResizer_1.default.resizeImage(obj, baseImagePath, thumbImagePath)];
                     case 5:
@@ -105,7 +105,9 @@ var ImageFinder = /** @class */ (function () {
         });
     };
     ImageFinder.buildPath = function (basePath, fileName) {
-        return basePath && fileName ? path_1.default.resolve(__dirname, "../..", basePath, fileName) : '';
+        return basePath && fileName
+            ? path_1.default.resolve(__dirname, '../..', basePath, fileName)
+            : '';
     };
     ImageFinder.getImageDimensions = function (obj) {
         return Boolean(obj.width && obj.height);

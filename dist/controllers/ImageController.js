@@ -58,7 +58,9 @@ var ImageController = /** @class */ (function () {
                         return [4 /*yield*/, ImageFinder_1.default.getImageByNameWidthAndHeight(imageData)];
                     case 1:
                         imagePath = _a.sent();
-                        return [2 /*return*/, (imagePath) ? this.sendResizedFile(res, imagePath) : this.sendErrorStatus(res)];
+                        return [2 /*return*/, imagePath
+                                ? this.sendResizedFile(res, imagePath)
+                                : this.sendErrorStatus(res)];
                 }
             });
         });
@@ -72,15 +74,17 @@ var ImageController = /** @class */ (function () {
         return imageRequest;
     };
     ImageController.validateRequest = function (obj) {
-        return Boolean((obj.filename && obj.width && obj.height) && this.isPositiveInteger(obj));
+        return Boolean(obj.filename && obj.width && obj.height && this.isPositiveInteger(obj));
     };
     ImageController.isPositiveInteger = function (obj) {
-        var widthAsNumber = (obj.width) ? parseInt(obj.width, 10) : 0;
-        var heightAsNumber = (obj.height) ? parseInt(obj.height, 10) : 0;
+        var widthAsNumber = obj.width ? parseInt(obj.width, 10) : 0;
+        var heightAsNumber = obj.height ? parseInt(obj.height, 10) : 0;
         return Boolean(widthAsNumber > 0 && heightAsNumber > 0);
     };
     ImageController.sendInvalidURLRequest = function (res) {
-        res.status(400).send('Invalid parameters. Please provide name, with and height. Width and height should be non negative.');
+        res
+            .status(400)
+            .send('Invalid parameters. Please provide name, with and height. Width and height should be non negative.');
     };
     ImageController.sendErrorStatus = function (res) {
         res.status(404).send('Error finding requested image');

@@ -43,7 +43,7 @@ var supertest_1 = __importDefault(require("supertest"));
 var index_1 = __importDefault(require("../index"));
 var request = (0, supertest_1.default)(index_1.default);
 describe('Test endpoint responses for main api', function () {
-    describe("Status 200 for main api route", function () {
+    describe('Status 200 for main api route', function () {
         var _this = this;
         it('test request', function () { return __awaiter(_this, void 0, void 0, function () {
             var response;

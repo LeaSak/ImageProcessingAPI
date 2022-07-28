@@ -49,7 +49,7 @@ describe('Image Resizer', function () {
         originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
         jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
     });
-    describe("resizeImage", function () {
+    describe('resizeImage', function () {
         var _this = this;
         it('should return an empty string', function () { return __awaiter(_this, void 0, void 0, function () {
             var _a, _b, _c, _d;
@@ -57,40 +57,44 @@ describe('Image Resizer', function () {
                 switch (_e.label) {
                     case 0:
                         _a = expect;
-                        return [4 /*yield*/, ImageResizer_1.default.resizeImage({ filename: 'foo', width: '100', height: '100' }, "", "")];
+                        return [4 /*yield*/, ImageResizer_1.default.resizeImage({ filename: 'foo', width: '100', height: '100' }, '', '')];
                     case 1:
-                        _a.apply(void 0, [_e.sent()]).toEqual("");
+                        _a.apply(void 0, [_e.sent()]).toEqual('');
                         _b = expect;
-                        return [4 /*yield*/, ImageResizer_1.default.resizeImage({ filename: 'foo', width: '100', height: '' }, "", "")];
+                        return [4 /*yield*/, ImageResizer_1.default.resizeImage({ filename: 'foo', width: '100', height: '' }, '', '')];
                     case 2:
-                        _b.apply(void 0, [_e.sent()]).toEqual("");
+                        _b.apply(void 0, [_e.sent()]).toEqual('');
                         _c = expect;
-                        return [4 /*yield*/, ImageResizer_1.default.resizeImage({ filename: '', width: '100', height: '100' }, "", "")];
+                        return [4 /*yield*/, ImageResizer_1.default.resizeImage({ filename: '', width: '100', height: '100' }, '', '')];
                     case 3:
-                        _c.apply(void 0, [_e.sent()]).toEqual("");
+                        _c.apply(void 0, [_e.sent()]).toEqual('');
                         _d = expect;
-                        return [4 /*yield*/, ImageResizer_1.default.resizeImage({ filename: 'foo', width: '100', height: '-100' }, "", "")];
+                        return [4 /*yield*/, ImageResizer_1.default.resizeImage({ filename: 'foo', width: '100', height: '-100' }, '', '')];
                     case 4:
-                        _d.apply(void 0, [_e.sent()]).toEqual("");
+                        _d.apply(void 0, [_e.sent()]).toEqual('');
                         expect(function () {
-                            return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_a) {
-                                switch (_a.label) {
-                                    case 0: return [4 /*yield*/, ImageResizer_1.default.resizeImage({ filename: 'foo', width: '100', height: '100' }, "", "")];
-                                    case 1:
-                                        _a.sent();
-                                        return [2 /*return*/];
-                                }
-                            }); });
+                            return __awaiter(this, void 0, void 0, function () {
+                                return __generator(this, function (_a) {
+                                    switch (_a.label) {
+                                        case 0: return [4 /*yield*/, ImageResizer_1.default.resizeImage({ filename: 'foo', width: '100', height: '100' }, '', '')];
+                                        case 1:
+                                            _a.sent();
+                                            return [2 /*return*/];
+                                    }
+                                });
+                            });
                         }).not.toThrow();
                         expect(function () {
-                            return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_a) {
-                                switch (_a.label) {
-                                    case 0: return [4 /*yield*/, ImageResizer_1.default.resizeImage({ filename: 'foo', width: '-100', height: '100' }, "", "")];
-                                    case 1:
-                                        _a.sent();
-                                        return [2 /*return*/];
-                                }
-                            }); });
+                            return __awaiter(this, void 0, void 0, function () {
+                                return __generator(this, function (_a) {
+                                    switch (_a.label) {
+                                        case 0: return [4 /*yield*/, ImageResizer_1.default.resizeImage({ filename: 'foo', width: '-100', height: '100' }, '', '')];
+                                        case 1:
+                                            _a.sent();
+                                            return [2 /*return*/];
+                                    }
+                                });
+                            });
                         }).not.toThrow();
                         return [2 /*return*/];
                 }
@@ -99,34 +103,40 @@ describe('Image Resizer', function () {
         it('should not throw an error', function () { return __awaiter(_this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 expect(function () {
-                    return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0: return [4 /*yield*/, ImageResizer_1.default.resizeImage({ filename: '', width: '100', height: '100' }, "", "")];
-                            case 1:
-                                _a.sent();
-                                return [2 /*return*/];
-                        }
-                    }); });
+                    return __awaiter(this, void 0, void 0, function () {
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0: return [4 /*yield*/, ImageResizer_1.default.resizeImage({ filename: '', width: '100', height: '100' }, '', '')];
+                                case 1:
+                                    _a.sent();
+                                    return [2 /*return*/];
+                            }
+                        });
+                    });
                 }).not.toThrow();
                 expect(function () {
-                    return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0: return [4 /*yield*/, ImageResizer_1.default.resizeImage({ filename: 'foo', width: '100', height: '100' }, "", "")];
-                            case 1:
-                                _a.sent();
-                                return [2 /*return*/];
-                        }
-                    }); });
+                    return __awaiter(this, void 0, void 0, function () {
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0: return [4 /*yield*/, ImageResizer_1.default.resizeImage({ filename: 'foo', width: '100', height: '100' }, '', '')];
+                                case 1:
+                                    _a.sent();
+                                    return [2 /*return*/];
+                            }
+                        });
+                    });
                 }).not.toThrow();
                 expect(function () {
-                    return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0: return [4 /*yield*/, ImageResizer_1.default.resizeImage({ filename: 'foo', width: '-100', height: '100' }, "", "")];
-                            case 1:
-                                _a.sent();
-                                return [2 /*return*/];
-                        }
-                    }); });
+                    return __awaiter(this, void 0, void 0, function () {
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0: return [4 /*yield*/, ImageResizer_1.default.resizeImage({ filename: 'foo', width: '-100', height: '100' }, '', '')];
+                                case 1:
+                                    _a.sent();
+                                    return [2 /*return*/];
+                            }
+                        });
+                    });
                 }).not.toThrow();
                 return [2 /*return*/];
             });

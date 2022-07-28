@@ -5,16 +5,15 @@ import { buildDirectories } from './utilities/fileUtilities';
 import { config } from './config/config';
 
 const app = express();
-const port = config.port;
+const port:number = config.port;
 
 app.use('/api', routes);
 
-app.listen(port, () => {
+app.listen(port, (): void =>{
   const fullDirName = path.join(__dirname, '..', config.paths.full);
   const thumbDirName = path.join(__dirname, '..', config.paths.thumb);
   buildDirectories(fullDirName);
   buildDirectories(thumbDirName);
-
   console.log(`server started at localhost:${port}`);
 });
 

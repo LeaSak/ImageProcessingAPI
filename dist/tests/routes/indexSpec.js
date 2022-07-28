@@ -43,7 +43,7 @@ var supertest_1 = __importDefault(require("supertest"));
 var index_1 = __importDefault(require("../../index"));
 var request = (0, supertest_1.default)(index_1.default);
 describe('Test endpoint responses', function () {
-    describe("Status 400 if missing parametes width and height", function () {
+    describe('Status 400 if missing parametes width and height', function () {
         var _this = this;
         it('test request: api/images', function () { return __awaiter(_this, void 0, void 0, function () {
             var response;
@@ -58,7 +58,7 @@ describe('Test endpoint responses', function () {
             });
         }); });
     });
-    describe("Status 400 if missing parameters height", function () {
+    describe('Status 400 if missing parameters height', function () {
         var _this = this;
         it('test request: api/images', function () { return __awaiter(_this, void 0, void 0, function () {
             var response;
@@ -73,7 +73,7 @@ describe('Test endpoint responses', function () {
             });
         }); });
     });
-    describe("Status 400 if missing parameters width", function () {
+    describe('Status 400 if missing parameters width', function () {
         var _this = this;
         it('test request: api/images', function () { return __awaiter(_this, void 0, void 0, function () {
             var response;
@@ -88,7 +88,7 @@ describe('Test endpoint responses', function () {
             });
         }); });
     });
-    describe("Status 400 if dimensions are not zero positive", function () {
+    describe('Status 400 if dimensions are not zero positive', function () {
         var _this = this;
         it('test request: api/images', function () { return __awaiter(_this, void 0, void 0, function () {
             var response;
@@ -103,7 +103,7 @@ describe('Test endpoint responses', function () {
             });
         }); });
     });
-    describe("Status 200 if dimensions are not zero parameters", function () {
+    describe('Status 200 if dimensions are not zero parameters', function () {
         var _this = this;
         it('test request: api/images', function () { return __awaiter(_this, void 0, void 0, function () {
             var response;

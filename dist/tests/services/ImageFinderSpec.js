@@ -48,7 +48,7 @@ describe('ImageFinder', function () {
         originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
         jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
     });
-    describe("getImageByNameWidthAndHeight", function () {
+    describe('getImageByNameWidthAndHeight', function () {
         var _this = this;
         it('should return an empty string', function () { return __awaiter(_this, void 0, void 0, function () {
             var _a;
@@ -56,9 +56,13 @@ describe('ImageFinder', function () {
                 switch (_b.label) {
                     case 0:
                         _a = expect;
-                        return [4 /*yield*/, ImageFinder_1.default.getImageByNameWidthAndHeight({ filename: 'foo', width: '100', height: '100' })];
+                        return [4 /*yield*/, ImageFinder_1.default.getImageByNameWidthAndHeight({
+                                filename: 'foo',
+                                width: '100',
+                                height: '100',
+                            })];
                     case 1:
-                        _a.apply(void 0, [_b.sent()]).toEqual("");
+                        _a.apply(void 0, [_b.sent()]).toEqual('');
                         return [2 /*return*/];
                 }
             });
@@ -68,9 +72,13 @@ describe('ImageFinder', function () {
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        expectedPath = path_1.default.resolve(config_1.config.paths.thumb, "santamonica-100x100.jpg");
+                        expectedPath = path_1.default.resolve(config_1.config.paths.thumb, 'santamonica-100x100.jpg');
                         _a = expect;
-                        return [4 /*yield*/, ImageFinder_1.default.getImageByNameWidthAndHeight({ filename: 'santamonica', width: '100', height: '100' })];
+                        return [4 /*yield*/, ImageFinder_1.default.getImageByNameWidthAndHeight({
+                                filename: 'santamonica',
+                                width: '100',
+                                height: '100',
+                            })];
                     case 1:
                         _a.apply(void 0, [_b.sent()]).toEqual(expectedPath);
                         return [2 /*return*/];
@@ -83,18 +91,28 @@ describe('ImageFinder', function () {
                 switch (_b.label) {
                     case 0:
                         _a = expect;
-                        return [4 /*yield*/, ImageFinder_1.default.getImageByNameWidthAndHeight({ filename: 'santamonica', width: '', height: '' })];
+                        return [4 /*yield*/, ImageFinder_1.default.getImageByNameWidthAndHeight({
+                                filename: 'santamonica',
+                                width: '',
+                                height: '',
+                            })];
                     case 1:
-                        _a.apply(void 0, [_b.sent()]).toEqual("");
+                        _a.apply(void 0, [_b.sent()]).toEqual('');
                         expect(function () {
-                            return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_a) {
-                                switch (_a.label) {
-                                    case 0: return [4 /*yield*/, ImageFinder_1.default.getImageByNameWidthAndHeight({ filename: 'santamonica', width: '', height: '' })];
-                                    case 1:
-                                        _a.sent();
-                                        return [2 /*return*/];
-                                }
-                            }); });
+                            return __awaiter(this, void 0, void 0, function () {
+                                return __generator(this, function (_a) {
+                                    switch (_a.label) {
+                                        case 0: return [4 /*yield*/, ImageFinder_1.default.getImageByNameWidthAndHeight({
+                                                filename: 'santamonica',
+                                                width: '',
+                                                height: '',
+                                            })];
+                                        case 1:
+                                            _a.sent();
+                                            return [2 /*return*/];
+                                    }
+                                });
+                            });
                         }).not.toThrow();
                         return [2 /*return*/];
                 }

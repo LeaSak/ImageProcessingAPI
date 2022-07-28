@@ -51,7 +51,9 @@ var ImageResizer = /** @class */ (function () {
                     case 0:
                         _b.trys.push([0, 4, , 5]);
                         if (!thumbImagePath) return [3 /*break*/, 2];
-                        return [4 /*yield*/, (0, sharp_1.default)(baseImagePath).resize(Number(obj.width), Number(obj.height)).toFile(thumbImagePath)];
+                        return [4 /*yield*/, (0, sharp_1.default)(baseImagePath)
+                                .resize(Number(obj.width), Number(obj.height))
+                                .toFile(thumbImagePath)];
                     case 1:
                         _a = _b.sent();
                         return [3 /*break*/, 3];
@@ -60,11 +62,11 @@ var ImageResizer = /** @class */ (function () {
                         _b.label = 3;
                     case 3:
                         sharpImage = _a;
-                        return [2 /*return*/, (sharpImage) ? thumbImagePath : ""];
+                        return [2 /*return*/, sharpImage ? thumbImagePath : ''];
                     case 4:
                         error_1 = _b.sent();
                         console.error(error_1);
-                        return [2 /*return*/, ""];
+                        return [2 /*return*/, ''];
                     case 5: return [2 /*return*/];
                 }
             });
