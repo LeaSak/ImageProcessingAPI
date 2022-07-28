@@ -3,7 +3,7 @@ import ImageController from '../../controllers/ImageController';
 
 const images: Router = express.Router();
 
-images.get('/', async (req, res): Promise<void> => {
+images.get('/', async (req:express.Request, res:express.Response): Promise<void> => {
   ImageController.processImageRequest(req, res);
 });
 export default images;

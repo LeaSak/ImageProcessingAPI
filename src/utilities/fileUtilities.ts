@@ -10,7 +10,7 @@ const checkFileAccess = async function (path: string): Promise<boolean> {
   }
 };
 
-const buildDirectories = function (dirPath: string) {
+const buildDirectories = function (dirPath: string): void {
   try {
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(dirPath, { recursive: true });
